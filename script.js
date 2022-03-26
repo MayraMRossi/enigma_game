@@ -20,11 +20,18 @@ class TheCode extends Codes {
 
     }
     generateCode(){
-      let number = Math.random();
+      
+      var colors = [blue,green,yellow,black,red,brown,violet,pink,orange,yellow];
+      console.log(this.type);
+      
+      for(let i=0;i<Number(this.colums);i++){
+        
+        var number = Math.random();
       number = number*9;
       number = Math.floor(number);
-      let colors = [blue,green,yellow,black,red,brown,violet,pink,orange,yellow];
-      for(let i=0;i<colums;i++){
+      number = 8;//prueba de numero
+      console.log(number);
+      
       if (this.type == "Colors"){
         this.code[i] = colors[number]
         console.log(this.code);
@@ -32,6 +39,7 @@ class TheCode extends Codes {
         this.code[i]=number;
         console.log(this.code)
         }
+    }
     }
 
 }
@@ -56,9 +64,11 @@ class Clues {
 
 
 
-
+const theCode0 = new TheCode("Numbers",2);
+console.log(theCode0.columns);
 
 function createNewCode (type,columns){
   const theCode1 = new TheCode(type,columns);
+  console.log(theCode1);
   theCode1.generateCode();
 }
