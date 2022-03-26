@@ -74,7 +74,7 @@ class Clues {
 function createNewCode (t,c){
   console.log(t)
   
-  if (t=="2"){
+  if (t==1){
    t = "Colors"
   }else{t="Numbers"}
   console.log(t + "  " + c);
@@ -84,3 +84,5 @@ function createNewCode (t,c){
   console.log(theCode1.columns)
   theCode1.generateCode();
 }
+
+
