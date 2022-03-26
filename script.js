@@ -51,7 +51,7 @@ class Colors extends Elements{
 }
 
 class Numbers extends Elements{
-    cosntructor(){
+    constructor (){
         super();
         this.number;//0,1,2,3,4,5,6,7,8,9
     }
