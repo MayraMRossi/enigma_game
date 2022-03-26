@@ -21,8 +21,8 @@ class TheCode extends Codes {
 
 }
 class Guessings extends Codes {
-    constructor(){
-        super();
+    constructor(type,columns){
+        super(type,columns);
         
     }
 
