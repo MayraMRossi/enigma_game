@@ -8,8 +8,8 @@ class User {
 class Codes {
     constructor(type,columns){
         this.id;
-        this.type;//number or color
-        this.columns;//cant de espacios del código
+        this.type = type;//number or color
+        this.columns = columns;//cant de espacios del código
     }
 }
 
@@ -21,15 +21,19 @@ class TheCode extends Codes {
     }
     generateCode(){
       
-      var colors = [blue,green,yellow,black,red,brown,violet,pink,orange,yellow];
-      console.log(this.type);
+      var colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
       
-      for(let i=0;i<Number(this.colums);i++){
+      console.log(this.type);
+      console.log(this.columns);
+      console.log(typeof(this.columns));
+      
+      for(var i=0;i<this.columns;i++){
+        console.log("ingresa al for")
         
         var number = Math.random();
       number = number*9;
       number = Math.floor(number);
-      number = 8;//prueba de numero
+      
       console.log(number);
       
       if (this.type == "Colors"){
@@ -37,9 +41,10 @@ class TheCode extends Codes {
         console.log(this.code);
       } else{
         this.code[i]=number;
-        console.log(this.code)
+        console.log(this.code[i])
         }
     }
+    console.log(this.code)
     }
 
 }
@@ -64,11 +69,18 @@ class Clues {
 
 
 
-const theCode0 = new TheCode("Numbers",2);
-console.log(theCode0.columns);
 
-function createNewCode (type,columns){
-  const theCode1 = new TheCode(type,columns);
-  console.log(theCode1);
+
+function createNewCode (t,c){
+  console.log(t)
+  
+  if (t=="2"){
+   t = "Colors"
+  }else{t="Numbers"}
+  console.log(t + "  " + c);
+  
+  const theCode1 = new TheCode(t,c);
+  console.log(theCode1.type);
+  console.log(theCode1.columns)
   theCode1.generateCode();
 }
