@@ -16,10 +16,26 @@ class Codes {
 class TheCode extends Codes {
     constructor(type,columns){
         super(type,columns);
+        this.code = [];
 
+    }
+    generateCode(){
+      let number = Math.random();
+      number = number*9;
+      number = Math.floor(number);
+      let colors = [blue,green,yellow,black,red,brown,violet,pink,orange,yellow];
+      for(let i=0;i<colums;i++){
+      if (this.type == "Colors"){
+        this.code[i] = colors[number]
+        console.log(this.code);
+      } else{
+        this.code[i]=number;
+        console.log(this.code)
+        }
     }
 
 }
+
 class Guessings extends Codes {
     constructor(type,columns){
         super(type,columns);
@@ -37,27 +53,12 @@ class Clues {
     }
 }
 
-class Elements {
-    constructor(){
-        this.id;
-    }
+
+
+
+
+
+function createNewCode (type,columns){
+  const theCode1 = new TheCode(type,columns);
+  theCode1.generateCode();
 }
-
-class Colors extends Elements{
-    constructor(){
-        super();
-        this.color;//blue,yellow,green,white,violet,red,brown,orange,pink,lightblue
-    }
-}
-
-class Numbers extends Elements{
-    constructor (){
-        super();
-        this.number;//0,1,2,3,4,5,6,7,8,9
-    }
-}
-
-
-
-
-

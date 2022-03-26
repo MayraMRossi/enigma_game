@@ -20,13 +20,22 @@
   </header>
   <div id="selectOptions">
     <h3>Para comenzar seleccioná las siguientes opciones</h3>
-    <form>
+    
+      <h4>Elementos del código</h4>
       <select name="numOrColor" id="numOrColor">
-        <option value="Numbers">Numbers</option>
-        <option value="Colors">Colors</option>
+        <option value="Numbers">Números</option>
+        <option value="Colors">Colores</option>
       </select>
-      
-    </form>
+      <h4>Cantidad de espacios del código</h4>
+      <select name="cantPosit" id="cantPosit">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+     <button type="submit" onclick="createNewCode(type,columns)">Continuar</button> 
+    
     
     
   </div>
