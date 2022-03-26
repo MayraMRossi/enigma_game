@@ -44,7 +44,7 @@ class Elements {
 }
 
 class Colors extends Elements{
-    cosntructor(){
+    constructor(){
         super();
         this.color;//blue,yellow,green,white,violet,red,brown,orange,pink,lightblue
     }
