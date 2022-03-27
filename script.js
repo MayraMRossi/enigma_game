@@ -1,3 +1,6 @@
+const colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
+      
+
 class User {
     constructor(nickname){
         this.id;
@@ -21,8 +24,6 @@ class TheCode extends Codes {
     }
     generateCode(){
       
-      var colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
-      
       console.log(this.type);
       console.log(this.columns);
       console.log(typeof(this.columns));
@@ -44,7 +45,13 @@ class TheCode extends Codes {
         console.log(this.code[i])
         }
     }
-    console.log(this.code)
+    console.log(this.code);
+    
+    
+  var select = document.getElementById('selectOptions').innerHTML='<h3> Código generado</h3>';
+    
+
+    
     }
 
 }
@@ -67,7 +74,9 @@ class Clues {
 }
 
 
-
+function start(){
+  var select = document.getElementById('selectOptions').innerHTML=' <h3>Para comenzar seleccioná las siguientes opciones</h3><h4>Elementos del código</h4><select name="tope" id="tope"><option value="2">Números</option><option value="1">Colores</option></select><h4>Cantidad de espacios del código</h4><select name="columns" id="columns"><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select><br><br><button type="submit" onclick="createNewCode(tope.value,columns.value)">Generar código</button> ';
+}
 
 
 
@@ -75,7 +84,7 @@ function createNewCode (t,c){
   console.log(t)
   
   if (t==1){
-   t = "Colors"
+  t = "Colors"
   }else{t="Numbers"}
   console.log(t + "  " + c);
   
@@ -83,6 +92,6 @@ function createNewCode (t,c){
   console.log(theCode1.type);
   console.log(theCode1.columns)
   theCode1.generateCode();
+  
 }
-
 
