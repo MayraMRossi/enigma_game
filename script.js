@@ -46,10 +46,10 @@ class TheCode extends Codes {
         }
     }
     console.log(this.code);
+    console.log(this.code.length);
     
-    
-  var select = document.getElementById('selectOptions').innerHTML='<h3> Código generado</h3>';
-    
+    guessing(this.code,this.type);
+  
 
     
     }
@@ -93,5 +93,27 @@ function createNewCode (t,c){
   console.log(theCode1.columns)
   theCode1.generateCode();
   
+}
+
+function guessing(code,type){
+  var l =code.length;
+  var t = type=="Colors"?"color":"numero";
+  console.log('llega'+l)
+  document.getElementById('selectOptions').innerHTML='<h3> Código generado</h3><h4>Ahora intenta adivinar el código</h4><div id="answering"></div>';
+  
+  inputs(l,t);
+    
+  
+}
+
+function inputs(l,t){
+  
+var inputs =[];
+  for (var j = 0; j < l; j++) {
+    inputs.push('<h4>Indique el '+t+' '+(j+1)+ '</h4><input type="text">')
+     }
+  document.getElementById('answering').innerHTML=inputs;
+    
+     
 }
 
