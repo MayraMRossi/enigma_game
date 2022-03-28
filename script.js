@@ -64,7 +64,6 @@ class Clues {
 }
 
 
-
 //Función que da inicio a cada juego
 //El usuario selecciona los detalles del código antes de iniciar (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
 function start(){
@@ -107,14 +106,11 @@ function guessing(code,type){
    <div id="answering"></div>
   `;
   inputs(l,t);
-    
-  
 }
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
 function inputs(l,t){
-  
-var inputs =[];
+  var inputs =[];
   for (var j = 0; j < l; j++) {
     inputs.push(`
      <h4>Indique el ${t} ${j+1}</h4>
@@ -122,7 +118,5 @@ var inputs =[];
     `)
   }
   document.getElementById('answering').innerHTML=inputs;
-    
-     
 }
 
