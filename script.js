@@ -116,10 +116,12 @@ function start(enigma){
   <br>
   <button type="submit" id="gen">Generar código</button> `;
   
-  
+  document.getElementById("gen").addEventListener("click", ()=>{
+   createCode(enigma);
+  })
   
 }
-  document.getElementById("gen").onclick(createCode(enigma,))
+  
   
  function createCode (enigma){
    var t = document.getElementById("type").value;
@@ -127,8 +129,7 @@ function start(enigma){
    enigma.types = t;
    enigma.columns = document.getElementById("columns").value;
    
-   console.log(enigma)
-   return enigma;
+   enigma.generateTheCode();
    
  }
 
