@@ -71,11 +71,15 @@ class Clues {
 
 //Función que da inicio a cada juego
 function newGame(){
+ 
  var t="Number"; //type = Number por default
  var c=4; // Columnas del código = 4 por default
  const enigma = new TheCode(t,c);
  console.log(enigma);
- start(enigma);
+ 
+ start(enigma); 
+// createCode(enigma);
+ 
  
  
  //enigma = createNewCode(enigma);
@@ -112,8 +116,12 @@ function start(enigma){
   <br>
   <button type="submit" id="gen">Generar código</button> `;
   
-  document.getElementById("gen").addEventListener("click",(enigma)=>{
-   
+  
+  
+}
+  document.getElementById("gen").onclick(createCode(enigma,))
+  
+ function createCode (enigma){
    var t = document.getElementById("type").value;
    t==1?t="Number":t="Color";
    enigma.types = t;
@@ -122,11 +130,7 @@ function start(enigma){
    console.log(enigma)
    return enigma;
    
-  
-   })
-   
-}
-  
+ }
 
 
 
