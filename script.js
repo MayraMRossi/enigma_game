@@ -72,44 +72,14 @@ class Clues {
 
 
 //Función que da inicio a cada juego
-function newGame(){
- 
- var t="Number"; //type = Number por default
- var c=4; // Columnas del código = 4 por default
- const enigma = new TheCode(t,c);
- console.log(enigma);
- 
- start(enigma); 
- answering(enigma);
- 
- 
- while (win>0){
-
- const answer = new Guessing(enigma.types,enigma.columns,enigma.code);
- consoleg(answer)
- win=-1;//hasta q vea como hago
- 
- }
- 
- 
- 
- 
- 
- 
- 
- 
-/* var win = 0;
- while (win!=-1){
-  guessing(enigma,t,c,win);
-  win=-1;
- }
- */
-}
-
 
 //El usuario selecciona los detalles del código antes de iniciar el juego (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
-function start(enigma){
-  var select = document.getElementById('selectOptions').innerHTML=`  
+function newGame(){
+  var t="Number"; //type = Number por default
+  var c=4; // Columnas del código = 4 por default
+  const enigma = new TheCode(t,c);
+  console.log(enigma);
+  document.getElementById('selectOptions').innerHTML=`  
   <h3>Para comenzar seleccioná las siguientes opciones</h3>
   <h4>Elementos del código</h4>
   <select name="tipo" id="type">
@@ -131,25 +101,24 @@ function start(enigma){
   document.getElementById("gen").addEventListener("click", ()=>{
    createCode(enigma);
   })
+  document.getElementById("gen").addEventListener("click", ()=>{
+    answering(enigma);
+   })
+
+
   
 }
-  
   
  function createCode (enigma){
    var t = document.getElementById("type").value;
    t==1?t="Number":t="Color";
    enigma.types = t;
-   enigma.columns = document.getElementById("columns").value;
+   enigma.columns = Number(document.getElementById("columns").value);
    console.log(enigma)
    
-  return enigma.generateTheCode();
+  enigma.generateTheCode();
    
- }
-
-
-
-  
-  
+ }  
 
 
  
@@ -157,27 +126,28 @@ function start(enigma){
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
 function answering(enigma){
- 
- 
- 
-  console.log(column)
-  var t = type=="Colors"?"color":"numero";
-  document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
+  var win = 0;
+  while (win>=0){
+    const answer = new Guessings(enigma.types,enigma.columns,enigma.code);
+    console.log(answer);
+    var t = enigma.types=="Color"?"color":"numero";
+    document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
    <h4>Ahora intenta adivinar el código</h4>
    <div id="answer"></div>
    <button type="submit" onclick="test()">Evaluar Respuesta</button>
    <div id="guessing"></div>
   `;
-  inputs(column,t);
-  
+  inputs(enigma.column,t);
+  win=-1;//hasta q vea como hago
+}
 
 }
 
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
-function inputs(column,t){
+function inputs(c,t){
   var inputs =[];
-  for (var j = 0; j < column; j++) {
+  for (var j = 0; j < c; j++) {
    id= `id${j+1}`;
    
     inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
@@ -206,4 +176,4 @@ function test(){
 }
 
 
-*/
+
