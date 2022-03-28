@@ -71,7 +71,7 @@ function start(){
   var select = document.getElementById('selectOptions').innerHTML=`  
   <h3>Para comenzar seleccioná las siguientes opciones</h3>
   <h4>Elementos del código</h4>
-  <select name="tope" id="tope">
+  <select name="tipo" id="tipo">
    <option value="2">Números</option>
    <option value="1">Colores</option>
   </select>
@@ -85,40 +85,33 @@ function start(){
   </select>
   <br>
   <br>
-  <button type="submit" onclick="createNewCode(tope.value,columns.value)">Generar código</button> `;
+  <button type="submit" onclick="createNewCode(tipo.value,columns.value)">Generar código</button> `;
 }
 
 
 // Se crea un código aleatorio automático
 function createNewCode (t,c){
-  console.log(t)
-  
   if (t==1){
-  t = "Colors"
+   t = "Colors"
   }else{t="Numbers"}
-  console.log(t + "  " + c);
-  
   const theCode1 = new TheCode(t,c);
-  console.log(theCode1.type);
-  console.log(theCode1.columns)
   theCode1.generateCode();
-  
 }
 
+//Función con la cual el usuario realiza los intentos de adivinar el código
 function guessing(code,type){
   var l =code.length;
   var t = type=="Colors"?"color":"numero";
-  console.log('llega'+l)
   document.getElementById('selectOptions').innerHTML= `<h3>Código generado</h3>
    <h4>Ahora intenta adivinar el código</h4>
    <div id="answering"></div>
   `;
-  
   inputs(l,t);
     
   
 }
 
+// Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
 function inputs(l,t){
   
 var inputs =[];
