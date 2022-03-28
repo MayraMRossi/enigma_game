@@ -18,6 +18,7 @@ class Codes {
         this.id;
         this.types = types;//number or color
         this.columns = columns;//cant de espacios del código
+         this.code = [];
     }
 }
 
@@ -25,14 +26,14 @@ class Codes {
 class TheCode extends Codes {
     constructor(types,columns){
         super(types,columns);
-        this.code = [];
+       
     }
     generateTheCode(){
       for(var i=0;i<this.columns;i++){
        var number = Math.random();
        number = number*9;
        number = Math.floor(number);
-       if (this.type == "Colors"){
+       if (this.types == "Color"){
         this.code[i] = colors[number]
        } else{
         this.code[i]=number;
@@ -40,7 +41,8 @@ class TheCode extends Codes {
        }
       }
       console.log(this.code);
-      return this.code;
+      return 0;
+      
       
     }
 }
@@ -78,11 +80,21 @@ function newGame(){
  console.log(enigma);
  
  start(enigma); 
-// createCode(enigma);
+ answering(enigma);
+ 
+ 
+ while (win>0){
+
+ const answer = new Guessing(enigma.types,enigma.columns,enigma.code);
+ consoleg(answer)
+ win=-1;//hasta q vea como hago
+ 
+ }
  
  
  
- //enigma = createNewCode(enigma);
+ 
+ 
  
  
  
@@ -128,8 +140,9 @@ function start(enigma){
    t==1?t="Number":t="Color";
    enigma.types = t;
    enigma.columns = document.getElementById("columns").value;
+   console.log(enigma)
    
-   enigma.generateTheCode();
+  return enigma.generateTheCode();
    
  }
 
@@ -138,12 +151,14 @@ function start(enigma){
   
   
 
-/*
+
  
 
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
-function guessing(code,type,column,win){
+function answering(enigma){
+ 
+ 
  
   console.log(column)
   var t = type=="Colors"?"color":"numero";
@@ -157,6 +172,7 @@ function guessing(code,type,column,win){
   
 
 }
+
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
 function inputs(column,t){
