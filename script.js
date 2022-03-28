@@ -27,7 +27,7 @@ class TheCode extends Codes {
         super(types,columns);
         this.code = [];
     }
-    generateCode(){
+    generateTheCode(){
       for(var i=0;i<this.columns;i++){
        var number = Math.random();
        number = number*9;
@@ -76,7 +76,8 @@ function newGame(){
  const enigma = new TheCode(t,c);
  console.log(enigma);
  start(enigma);
- //enigma.generateCode();
+ 
+ 
  //enigma = createNewCode(enigma);
  
  
@@ -110,15 +111,18 @@ function start(enigma){
   <br>
   <br>
   <button type="submit" id="gen">Generar código</button> `;
+  
   document.getElementById("gen").addEventListener("click",(enigma)=>{
    
    var t = document.getElementById("type").value;
    t==1?t="Number":t="Color";
    enigma.types = t;
-
    enigma.columns = document.getElementById("columns").value;
-
    
+   console.log(enigma)
+   return enigma;
+   
+  
    })
    
 }
