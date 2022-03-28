@@ -1,4 +1,5 @@
 /*****ENIGMA GAME******/
+/*****Creado por Mayra M Rossi*****/
 
 //Colores para el código
 const colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
@@ -39,17 +40,16 @@ class TheCode extends Codes {
        }
       }
       console.log(this.code);
-      guessing(this.code,this.type);
+      return this.code;
+      
     }
 }
 
 //Clase creadora de respuestas de usuarios
 class Guessings extends Codes {
-    constructor(type,columns){
+    constructor(type,columns,code){
         super(type,columns);
-        
     }
-
 }
 
 
@@ -84,7 +84,17 @@ function start(){
   </select>
   <br>
   <br>
-  <button type="submit" onclick="createNewCode(tipo.value,columns.value)">Generar código</button> `;
+  <button type="submit" onclick="newGame(tipo.value,columns.value)">Generar código</button> `;
+}
+
+function newGame(t,c){
+ const enigma = createNewCode(t,c);
+ var win = 0;
+ while (win!=-1){
+  guessing(enigma,t,c,win);
+  win=-1;
+ }
+ 
 }
 
 
@@ -94,29 +104,54 @@ function createNewCode (t,c){
    t = "Colors"
   }else{t="Numbers"}
   const theCode1 = new TheCode(t,c);
-  theCode1.generateCode();
+  return theCode1.generateCode();
 }
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
-function guessing(code,type){
-  var l =code.length;
+function guessing(code,type,column,win){
+ 
+  console.log(column)
   var t = type=="Colors"?"color":"numero";
-  document.getElementById('selectOptions').innerHTML= `<h3>Código generado</h3>
+  document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
    <h4>Ahora intenta adivinar el código</h4>
-   <div id="answering"></div>
+   <div id="answer"></div>
+   <button type="submit" onclick="evaluate()">Evaluar Respuesta</button>
+   <div id="guessing"></div>
   `;
-  inputs(l,t);
+  inputs(column,t);
+  
+
 }
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
-function inputs(l,t){
+function inputs(column,t){
   var inputs =[];
-  for (var j = 0; j < l; j++) {
-    inputs.push(`
-     <h4>Indique el ${t} ${j+1}</h4>
-     <input type="text">
-    `)
+  for (var j = 0; j < column; j++) {
+   id= `id${j+1}`;
+   
+    inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
+    console.log(inputs);
   }
-  document.getElementById('answering').innerHTML=inputs;
+
+ 
+  
+  document.getElementById('answer').innerHTML=inputs;
+  
 }
+
+function evaluate(){
+ var column = 3;
+ var answer;
+  for (var k=0;k<column;k++){
+   
+   answer.push(document.getElementById(`id${k+1}`).value())
+  
+  }
+  console.log(answer)
+  const guess = new Guessings(type,column,answer);
+  
+  
+ 
+}
+
 
