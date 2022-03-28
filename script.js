@@ -14,17 +14,17 @@ class User {
 
 //Clase madre de los códigos 
 class Codes {
-    constructor(type,columns){
+    constructor(types,columns){
         this.id;
-        this.type = type;//number or color
+        this.types = types;//number or color
         this.columns = columns;//cant de espacios del código
     }
 }
 
 //Clase creadora del codigo a descifrar
 class TheCode extends Codes {
-    constructor(type,columns){
-        super(type,columns);
+    constructor(types,columns){
+        super(types,columns);
         this.code = [];
     }
     generateCode(){
@@ -47,8 +47,8 @@ class TheCode extends Codes {
 
 //Clase creadora de respuestas de usuarios
 class Guessings extends Codes {
-    constructor(type,columns,code){
-        super(type,columns);
+    constructor(types,columns,code){
+        super(types,columns);
     }
 }
 
@@ -64,15 +64,40 @@ class Clues {
 }
 
 
+
+
+
+
+
 //Función que da inicio a cada juego
-//El usuario selecciona los detalles del código antes de iniciar (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
-function start(){
+function newGame(){
+ var t="Number"; //type = Number por default
+ var c=4; // Columnas del código = 4 por default
+ const enigma = new TheCode(t,c);
+ console.log(enigma);
+ start(enigma);
+ //enigma.generateCode();
+ //enigma = createNewCode(enigma);
+ 
+ 
+ 
+/* var win = 0;
+ while (win!=-1){
+  guessing(enigma,t,c,win);
+  win=-1;
+ }
+ */
+}
+
+
+//El usuario selecciona los detalles del código antes de iniciar el juego (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
+function start(enigma){
   var select = document.getElementById('selectOptions').innerHTML=`  
   <h3>Para comenzar seleccioná las siguientes opciones</h3>
   <h4>Elementos del código</h4>
-  <select name="tipo" id="tipo">
-   <option value="2">Números</option>
-   <option value="1">Colores</option>
+  <select name="tipo" id="type">
+   <option value="1">Números</option>
+   <option value="2">Colores</option>
   </select>
   <h4>Cantidad de espacios del código</h4>
   <select name="columns" id="columns">
@@ -84,28 +109,29 @@ function start(){
   </select>
   <br>
   <br>
-  <button type="submit" onclick="newGame(tipo.value,columns.value)">Generar código</button> `;
-}
+  <button type="submit" id="gen">Generar código</button> `;
+  document.getElementById("gen").addEventListener("click",(enigma)=>{
+   
+   var t = document.getElementById("type").value;
+   t==1?t="Number":t="Color";
+   enigma.types = t;
 
-function newGame(t,c){
- const enigma = createNewCode(t,c);
- var win = 0;
- while (win!=-1){
-  guessing(enigma,t,c,win);
-  win=-1;
- }
+   enigma.columns = document.getElementById("columns").value;
+
+   
+   })
+   
+}
+  
+
+
+
+  
+  
+
+/*
  
-}
 
-
-// Se crea un código aleatorio automático
-function createNewCode (t,c){
-  if (t==1){
-   t = "Colors"
-  }else{t="Numbers"}
-  const theCode1 = new TheCode(t,c);
-  return theCode1.generateCode();
-}
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
 function guessing(code,type,column,win){
@@ -115,7 +141,7 @@ function guessing(code,type,column,win){
   document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
    <h4>Ahora intenta adivinar el código</h4>
    <div id="answer"></div>
-   <button type="submit" onclick="evaluate()">Evaluar Respuesta</button>
+   <button type="submit" onclick="test()">Evaluar Respuesta</button>
    <div id="guessing"></div>
   `;
   inputs(column,t);
@@ -132,26 +158,27 @@ function inputs(column,t){
     inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
     console.log(inputs);
   }
-
- 
   
   document.getElementById('answer').innerHTML=inputs;
   
 }
 
-function evaluate(){
+
+function test(){
  var column = 3;
- var answer;
+ var answer =[];
+ console.log(document.getElementById('id1').value)
   for (var k=0;k<column;k++){
+   var id=`id${k+1}`
    
-   answer.push(document.getElementById(`id${k+1}`).value())
-  
-  }
+   answer.push(Number(document.getElementById(id).value)
+  )}
   console.log(answer)
-  const guess = new Guessings(type,column,answer);
+  //const guess = new Guessings(type,column,answer);
   
   
  
 }
 
 
+*/
