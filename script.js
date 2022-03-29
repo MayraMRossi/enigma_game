@@ -72,6 +72,7 @@ class Clues {
 
 //El usuario selecciona los detalles del código antes de iniciar el juego (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
 function newGame(){
+  document.getElementById("contador").innerHTML=` `;
   
   var t="Number"; //type = Number por default
   var c=4; // Columnas del código = 4 por default
@@ -186,7 +187,7 @@ function test(enigma,answer,result){
   if(result.wellPositioned==enigma.columns){
     document.getElementById('selectOptions').innerHTML=`<h3>Adivinaste el código!! era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
     contador =1;
-    document.getElementById("contador").innerHTML=` `;
+    
 
     
   }else{
