@@ -100,7 +100,7 @@ function newGame(){
   <br>
   <br>
   <button type="submit" id="gen">Generar código</button> `;
-  document.getElementById("contador").innerHTML=`<h2>Intento n° :${contador}</h2>`;
+  
   
   document.getElementById("gen").addEventListener("click", ()=>{
    createCode(enigma);
@@ -130,6 +130,7 @@ function newGame(){
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
 function answering(enigma){
+  document.getElementById("contador").innerHTML=`<h3>Intento n° : ${contador}</h3>`;
   var win = 0;
   while (win>=0){
     const answer = new Guessings(enigma.types,enigma.columns);
@@ -199,7 +200,7 @@ function test(enigma,answer,result){
     document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${t} en la posicion correcta, ${result.badPositioned} ${t} en la posición equivocada y ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
     contador +=1;
-    document.getElementById("contador").innerHTML=contador;
+    
   }
   
 
