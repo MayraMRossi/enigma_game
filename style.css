@@ -10,7 +10,7 @@ background: linear-gradient(90deg, rgba(73,45,168,1) 50%, rgba(208,154,255,1) 10
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#492da8",endColorstr="#d09aff",GradientType=1);
 }
 
-body{
+body{   
     margin: 5% 10%;
 }
 
@@ -18,20 +18,24 @@ header{
     background-color: #bef620;
     font-family: 'Rubik', sans-serif;
     padding: 2%;
+    border-radius: 20px;
 }
 
 section{
-    margin: 7%;
+    padding: 7%;
+    margin-top: 2%;
+    background-color: #fff9f0;
+    border-radius: 20px;
 }
 
 h2{
-    color: #fff9f0;
+    color: #492da8;
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
     padding-top: 2%;
 }
 h3{
-    color: #fff9f0;
+    color: #492da8;
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
     padding-top: 2%;
@@ -44,4 +48,12 @@ button{
     font-family: 'Rubik', sans-serif;
     padding: 0.5%;
     margin-top: 2%;
+}
+
+#answer input{
+    width:50px;
+    height: 60px;
+    border-radius: 10px;
+    border-color: #bef620;
+    text-align: center;
 }

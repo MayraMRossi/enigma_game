@@ -3,6 +3,8 @@
 
 //Colores para el código
 const colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
+
+var contador = 1;
       
 //Usuario
 class User {
@@ -75,6 +77,7 @@ class Clues {
 
 //El usuario selecciona los detalles del código antes de iniciar el juego (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
 function newGame(){
+  
   var t="Number"; //type = Number por default
   var c=4; // Columnas del código = 4 por default
   const enigma = new TheCode(t,c);
@@ -97,6 +100,7 @@ function newGame(){
   <br>
   <br>
   <button type="submit" id="gen">Generar código</button> `;
+  document.getElementById("contador").innerHTML=`<h2>Intento n° :${contador}</h2>`;
   
   document.getElementById("gen").addEventListener("click", ()=>{
    createCode(enigma);
@@ -130,14 +134,14 @@ function answering(enigma){
   while (win>=0){
     const answer = new Guessings(enigma.types,enigma.columns);
     console.log(answer);
-    var t = enigma.types=="Color"?"color":"numero";
+    
    document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
    <h2>Ahora intenta adivinar el código</h2>
    <div id="answer"></div>
    <button type="submit" id="test">Evaluar Respuesta</button>
    <div id="guessing"></div>
   `;
-  inputs(enigma.columns,t);
+  inputs(enigma.columns);
   const result = new Clues();
   win = document.getElementById("test").addEventListener("click",()=>{return test(enigma,answer,result)});
   
@@ -148,15 +152,15 @@ function answering(enigma){
 
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
-function inputs(c,t){
+function inputs(c){
   console.log(c)
   var inputs =[];
   for (var j = 0; j < c; j++) {
      id= `id${j+1}`;
-     inputs.push(`<h3>Indique el ${t} ${j+1}</h3><input type="text" id="${id}" required>`)
+     inputs.push(`<input type="text" id="${id}" required>`)
      
  }
-  
+  inputs = inputs.join("");
   document.getElementById('answer').innerHTML=inputs;
   
 }
@@ -170,6 +174,7 @@ function test(enigma,answer,result){
  
   for (var k=0;k<enigma.columns;k++){
    var id=`id${k+1}`;
+   var t = enigma.types=="Color"?"color":"numero";
    
    answer.code.push(Number(document.getElementById(id).value));
    if(answer.code[k]==enigma.code[k]){
@@ -184,9 +189,13 @@ function test(enigma,answer,result){
 
   if(result.wellPositioned==enigma.columns){
     document.getElementById('selectOptions').innerHTML=`<h3>Adivinaste el código!! era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
+    contador =1;
+    
   }else{
-    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${enigma.types} en la posicion correcta, ${result.badPositioned} ${enigma.types} en la posición equivocada y ${result.nonExistent} ${enigma.types} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
+    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${t} en la posicion correcta, ${result.badPositioned} ${t} en la posición equivocada y ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
+    contador +=1;
+    document.getElementById("contador").innerHTML=contador;
   }
   
 
