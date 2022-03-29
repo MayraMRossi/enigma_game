@@ -3,15 +3,25 @@
     padding:0%;
 }
 html{
-    background-color: #492da8;
+    background: rgb(73,45,168);
+background: -moz-linear-gradient(90deg, rgba(73,45,168,1) 50%, rgba(208,154,255,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(73,45,168,1) 50%, rgba(208,154,255,1) 100%);
+background: linear-gradient(90deg, rgba(73,45,168,1) 50%, rgba(208,154,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#492da8",endColorstr="#d09aff",GradientType=1);
+}
+
+body{
     margin: 5% 10%;
-    
 }
 
 header{
     background-color: #bef620;
     font-family: 'Rubik', sans-serif;
     padding: 2%;
+}
+
+section{
+    margin: 7%;
 }
 
 h2{
