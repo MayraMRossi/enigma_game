@@ -175,21 +175,29 @@ function inputs(c) {
 //Función llamada en answering() que devuelve los resultados de cada intento.
 function test(enigma, answer, result) {
   var t = enigma.types == "Color" ? "color/es" : "numero/s";
+  var check =[];
+
 
   for (var k = 0; k < enigma.columns; k++) {
     var id = `id${k + 1}`;
-
     answer.code.push(Number(document.getElementById(id).value));
-
     if (answer.code[k] == enigma.code[k]) {
       result.wellPositioned += 1;
-    } else {
-      if (enigma.code.includes(answer.code[k])) {
-        result.badPositioned += 1;
+      check.push(answer.cod[k]);
+    }
+  }
+  for (var l = 0; l < enigma.columns; l++) {
+      
+      if (enigma.code.includes(answer.code[l])) {
+        if(check.includes(answer.code[l])){
+          result.nonExistent += 1;
+        }else{
+          result.badPositioned += 1;
+        }
       } else {
         result.nonExistent += 1;
       }
-    }
+    
   }
   //Devuelve el resultado al usuario
   if (result.wellPositioned == enigma.columns) {
@@ -248,3 +256,4 @@ function colorPickerGenerator(){
 
 }
 */
+
