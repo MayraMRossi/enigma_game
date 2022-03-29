@@ -169,27 +169,23 @@ function inputs(c){
 
 function test(enigma,answer,result){
 
- 
-  console.log("respues completa");
-  console.log(answer.code);
- 
- console.log("respuesta simplificada");
- console.log(answer.code);
 
+ var t = enigma.types=="Color"?"color/es":"numero/s";
  
   for (var k=0;k<enigma.columns;k++){
    var id=`id${k+1}`;
-   var t = enigma.types=="Color"?"color":"numero";
+   
    
    answer.code.push(Number(document.getElementById(id).value));
+   
    if(answer.code[k]==enigma.code[k]){
      result.wellPositioned +=1;
    }else{
      if(enigma.code.includes(answer.code[k])){
-      result.badPositioned +=1;}
-     else{result.nonExistent +=1}
+        result.badPositioned +=1;
+      }else{result.nonExistent +=1}
+   }
   }
-}
   console.log(enigma.columns+1)
 
   if(result.wellPositioned==enigma.columns){
@@ -199,7 +195,7 @@ function test(enigma,answer,result){
 
     
   }else{
-    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,intentalo nuevamente.<br> <br> Pistas:  <br>${result.wellPositioned} ${t} en la posicion correcta <br> ${result.badPositioned} ${t} en la posición equivocada <br> ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
+    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código, intentalo nuevamente.<br> <br> Pistas:  <br>${result.wellPositioned} ${t} en la posicion correcta <br> ${result.badPositioned} ${t} en la posición equivocada <br> ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
     contador +=1;
     
