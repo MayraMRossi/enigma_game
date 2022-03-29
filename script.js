@@ -20,7 +20,7 @@ class Codes {
         this.id;
         this.types = types;//number or color
         this.columns = columns;//cant de espacios del código
-         this.code = [];
+        this.code = [];
     }
 }
 
