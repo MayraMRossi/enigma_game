@@ -169,8 +169,12 @@ function inputs(c){
 function test(enigma,answer,result){
 
  
-  
+  console.log("respues completa");
+  console.log(answer.code);
  
+ console.log("respuesta simplificada");
+ console.log(answer.code);
+
  
   for (var k=0;k<enigma.columns;k++){
    var id=`id${k+1}`;
@@ -202,3 +206,4 @@ function test(enigma,answer,result){
   
 
 }
+
