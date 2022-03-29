@@ -1,7 +1,7 @@
 /*****ENIGMA GAME******/
 /*****Creado por Mayra M Rossi*****/
 
-//Colores utilizados
+//Colores 
 const colors = [
   "blue",
   "green",
