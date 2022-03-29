@@ -194,9 +194,8 @@ function test(enigma, answer, result) {
         }else{
           result.badPositioned += 1;
         }
-      } else {
-        result.nonExistent += 1;
-      }
+      } 
+      result.nonExistent=enigma.columns-result.wellPositioned-result.badPositioned;
     
   }
   //Devuelve el resultado al usuario
