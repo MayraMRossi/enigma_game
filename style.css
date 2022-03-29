@@ -87,3 +87,35 @@ button {
     border-radius: 20px;
     text-align: center;
 }
+
+#colorPicker #c0{
+    color: blue;
+}
+#colorPicker #c1{
+    color: green;
+}
+#colorPicker #c2{
+    color: yellow;
+}
+#colorPicker #c3{
+    color: black;
+}
+#colorPicker #c4{
+    color: red;
+}
+#colorPicker #c5{
+    color: rgb(73, 9, 9);
+}
+#colorPicker #c6{
+    color: rgb(145, 30, 145);
+}
+#colorPicker #c7{
+    color: rgb(255, 144, 162);
+}
+#colorPicker #c8{
+    color: orange;
+}
+#colorPicker #c9{
+    color: yellow;
+}
+

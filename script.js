@@ -1,18 +1,19 @@
 /*****ENIGMA GAME******/
 /*****Creado por Mayra M Rossi*****/
 
-//Colores para el código
+//Colores utilizados
 const colors = ["blue","green","yellow","black","red","brown","violet","pink","orange","yellow"];
 
-var contador = 1;
       
-//Usuario
+//Usuario (aun no utilizado)
+/*
 class User {
     constructor(nickname){
         this.id;
         this.nickname = nickname;
     }
 }
+*/
 
 //Clase madre de los códigos 
 class Codes {
@@ -28,8 +29,10 @@ class Codes {
 class TheCode extends Codes {
     constructor(types,columns){
         super(types,columns);
+        this.counter=1;
        
     }
+    
     generateTheCode(){
       for(var i=0;i<this.columns;i++){
        var number = Math.random();
@@ -44,8 +47,6 @@ class TheCode extends Codes {
       }
       console.log(this.code);
       return 0;
-      
-      
     }
 }
 
@@ -126,7 +127,7 @@ function newGame(){
 
 //Función con la cual el usuario realiza los intentos de adivinar el código
 function answering(enigma){
-  document.getElementById("contador").innerHTML=`<h3>Intento n° : ${contador}</h3>`;
+  document.getElementById("contador").innerHTML=`<h3>Intento n° : ${enigma.counter}</h3>`;
   
  
     const answer = new Guessings(enigma.types,enigma.columns);
@@ -188,23 +189,41 @@ function test(enigma,answer,result){
 
   if(result.wellPositioned==enigma.columns){
     document.getElementById('selectOptions').innerHTML=`<h3>Adivinaste el código!! era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
-    contador =1;
+    enigma.counter =1;
     
 
     
   }else{
     document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código, intentalo nuevamente.<br> <br> Pistas:  <br>${result.wellPositioned} ${t} en la posicion correcta <br> ${result.badPositioned} ${t} en la posición equivocada <br> ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
-    contador +=1;
+    enigma.counter +=1;
     
   }
-  
-
-  
-
 }
 
 function forced (enigma){
   document.getElementById('selectOptions').innerHTML=`<h3>El código era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
-    contador =1;
+  enigma.counter =1;
 }
+
+
+
+
+//Funciones aun no utilizadas
+/*
+
+function colorPickerGenerator(){
+  document.getElementById("colorPicker").innerHTML=`
+  <div id="c0"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c1"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c2"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c3"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c4"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c5"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c6"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c7"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c8"><i class="fa-solid fa-square-0"></i></div>
+  <div id="c9"><i class="fa-solid fa-square-0"></i></div>`;
+
+}
+*/
