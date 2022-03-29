@@ -44,13 +44,14 @@ h3{
 
 button {
     -webkit-border-radius: 28;
-    -moz-border-radius: 28;
-    border-radius: 28px;
-    color: #ffffff;
-    font-size: 20px;
-    background: #d09aff;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  background: #d09aff;
+  padding: 10px 20px 10px 20px;
+  border: solid #1f628d 0px;
+  text-decoration: none;
   }
   
   button:hover {
