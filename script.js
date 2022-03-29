@@ -68,11 +68,6 @@ class Clues {
 }
 
 
-
-
-
-
-
 //Función que da inicio a cada juego
 
 //El usuario selecciona los detalles del código antes de iniciar el juego (Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
@@ -131,8 +126,8 @@ function newGame(){
 //Función con la cual el usuario realiza los intentos de adivinar el código
 function answering(enigma){
   document.getElementById("contador").innerHTML=`<h3>Intento n° : ${contador}</h3>`;
-  var win = 0;
-  while (win>=0){
+  
+ 
     const answer = new Guessings(enigma.types,enigma.columns);
     console.log(answer);
     
@@ -144,9 +139,9 @@ function answering(enigma){
   `;
   inputs(enigma.columns);
   const result = new Clues();
-  win = document.getElementById("test").addEventListener("click",()=>{return test(enigma,answer,result)});
+  document.getElementById("test").addEventListener("click",()=>{return test(enigma,answer,result)});
   
-}
+
 
 
 }
