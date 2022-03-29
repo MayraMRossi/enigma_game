@@ -49,7 +49,7 @@ class TheCode extends Codes {
 
 //Clase creadora de respuestas de usuarios
 class Guessings extends Codes {
-    constructor(types,columns,code){
+    constructor(types,columns){
         super(types,columns);
     }
 }
@@ -59,9 +59,9 @@ class Guessings extends Codes {
 class Clues {
     constructor(){
         this.id;
-        this.wellPositioned; //cantidad de elementos en la posicion correta
-        this.badPositioned; //cantidad de elementos mal posicionados
-        this.nonExistent; //cantidad de elementos inexistentes
+        this.wellPositioned = 0; //cantidad de elementos en la posicion correta
+        this.badPositioned = 0; //cantidad de elementos mal posicionados
+        this.nonExistent = 0; //cantidad de elementos inexistentes
     }
 }
 
@@ -128,52 +128,68 @@ function newGame(){
 function answering(enigma){
   var win = 0;
   while (win>=0){
-    const answer = new Guessings(enigma.types,enigma.columns,enigma.code);
+    const answer = new Guessings(enigma.types,enigma.columns);
     console.log(answer);
     var t = enigma.types=="Color"?"color":"numero";
-    document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
+   document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
    <h4>Ahora intenta adivinar el código</h4>
    <div id="answer"></div>
-   <button type="submit" onclick="test()">Evaluar Respuesta</button>
+   <button type="submit" id="test">Evaluar Respuesta</button>
    <div id="guessing"></div>
   `;
-  inputs(enigma.column,t);
-  win=-1;//hasta q vea como hago
+  inputs(enigma.columns,t);
+  const result = new Clues();
+  win = document.getElementById("test").addEventListener("click",()=>{return test(enigma,answer,result)});
+  
 }
+
 
 }
 
 
 // Función accesoria de guessing() que permite crear tantos ingresos como elementos tenga el código
 function inputs(c,t){
+  console.log(c)
   var inputs =[];
   for (var j = 0; j < c; j++) {
-   id= `id${j+1}`;
-   
-    inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
-    console.log(inputs);
-  }
+     id= `id${j+1}`;
+     inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
+     
+ }
   
   document.getElementById('answer').innerHTML=inputs;
   
 }
 
 
-function test(){
- var column = 3;
- var answer =[];
- console.log(document.getElementById('id1').value)
-  for (var k=0;k<column;k++){
-   var id=`id${k+1}`
-   
-   answer.push(Number(document.getElementById(id).value)
-  )}
-  console.log(answer)
-  //const guess = new Guessings(type,column,answer);
-  
+function test(enigma,answer,result){
+
+ 
   
  
+ 
+  for (var k=0;k<enigma.columns;k++){
+   var id=`id${k+1}`;
+   
+   answer.code.push(Number(document.getElementById(id).value));
+   if(answer.code[k]==enigma.code[k]){
+     result.wellPositioned +=1;
+   }else{
+     if(enigma.code.includes(answer.code[k])){
+      result.badPositioned +=1;}
+     else{result.nonExistent +=1}
+  }
 }
+  console.log(enigma.columns+1)
 
+  if(result.wellPositioned==enigma.columns){
+    document.getElementById('selectOptions').innerHTML=`Adivinaste el código!! era ${enigma.code} <button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
+  }else{
+    document.getElementById('selectOptions').innerHTML=`Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${enigma.types} en la posicion correcta, ${result.badPositioned} ${enigma.types} en la posición equivocada y ${result.nonExistent} ${enigma.types} inexistentes <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
+    document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
+  }
+  
 
+  
 
+}
