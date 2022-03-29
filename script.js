@@ -183,7 +183,7 @@ function test(enigma, answer, result) {
     answer.code.push(Number(document.getElementById(id).value));
     if (answer.code[k] == enigma.code[k]) {
       result.wellPositioned += 1;
-      check.push(answer.cod[k]);
+      check.push(answer.code[k]);
     }
   }
   for (var l = 0; l < enigma.columns; l++) {
