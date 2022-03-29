@@ -83,7 +83,7 @@ function newGame(){
   const enigma = new TheCode(t,c);
   console.log(enigma);
   document.getElementById('selectOptions').innerHTML=`  
-  <h2>Para comenzar seleccioná las siguientes opciones</h2>
+  <h2>Opciones del juego</h2>
   <h3>Elementos del código</h3>
   <select name="tipo" id="type">
    <option value="1">Números</option>
@@ -195,9 +195,11 @@ function test(enigma,answer,result){
   if(result.wellPositioned==enigma.columns){
     document.getElementById('selectOptions').innerHTML=`<h3>Adivinaste el código!! era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
     contador =1;
+    document.getElementById("contador").innerHTML=` `;
+
     
   }else{
-    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${t} en la posicion correcta, ${result.badPositioned} ${t} en la posición equivocada y ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
+    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,intentalo nuevamente.<br> <br> Pistas:  <br>${result.wellPositioned} ${t} en la posicion correcta <br> ${result.badPositioned} ${t} en la posición equivocada <br> ${result.nonExistent} ${t} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
     contador +=1;
     

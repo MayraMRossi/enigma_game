@@ -50,14 +50,30 @@ button{
     margin-top: 2%;
 }
 
+#answer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
 #answer input{
-    width:50px;
-    height: 60px;
+    width:10%;
+    min-height: 50px;
     border-radius: 10px;
     border-color: #bef620;
     text-align: center;
+    margin-right: 1%;
+    
+    
+    
 }
 #contador{
     margin-top: 2%;
     background-color: #fff9f0;
+    border-radius: 20px;
+    text-align: center;
 }
