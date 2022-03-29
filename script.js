@@ -217,7 +217,7 @@ function test(enigma, answer, result) {
     <br> 
     ${result.badPositioned} ${t} en la posición equivocada 
     <br>
-     ${result.nonExistent} ${t} inexistentes </h3> 
+     ${result.nonExistent} ${t} inexistente/s </h3> 
      <button type="submit" id="answerAgain" >Intentar de nuevo</button>`;
 
     document.getElementById("answerAgain").addEventListener("click", () => {
