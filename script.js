@@ -136,11 +136,13 @@ function answering(enigma){
    <h2>Ahora intenta adivinar el código</h2>
    <div id="answer"></div>
    <button type="submit" id="test">Evaluar Respuesta</button>
+   <button type="submit" id="forced" >Mostrar el código</button>
    <div id="guessing"></div>
   `;
   inputs(enigma.columns);
   const result = new Clues();
   document.getElementById("test").addEventListener("click",()=>{return test(enigma,answer,result)});
+  document.getElementById("forced").addEventListener("click",()=>{forced(enigma)});
   
 
 
@@ -202,3 +204,7 @@ function test(enigma,answer,result){
 
 }
 
+function forced (enigma){
+  document.getElementById('selectOptions').innerHTML=`<h3>El código era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
+    contador =1;
+}
