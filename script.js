@@ -195,9 +195,9 @@ function test(enigma, answer, result) {
           result.badPositioned += 1;
         }
       } 
-      result.nonExistent=enigma.columns-result.wellPositioned-result.badPositioned;
-    
+      check.push(answer.code[l]);
   }
+  result.nonExistent=enigma.columns-result.wellPositioned-result.badPositioned;
   //Devuelve el resultado al usuario
   if (result.wellPositioned == enigma.columns) {
     document.getElementById("selectOptions").innerHTML = `
@@ -213,7 +213,7 @@ function test(enigma, answer, result) {
     <br> 
     Pistas:  
     <br>
-    ${result.wellPositioned} ${t} en la posicion correcta 
+    ${result.wellPositioned} ${t} en la posición correcta 
     <br> 
     ${result.badPositioned} ${t} en la posición equivocada 
     <br>
