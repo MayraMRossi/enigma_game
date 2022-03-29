@@ -42,13 +42,21 @@ h3{
     padding-bottom: 1%;
 }
 
-button{
-    background-color: #d09aff;
-    color: black;
-    font-family: 'Rubik', sans-serif;
-    padding: 0.5%;
-    margin-top: 2%;
-}
+button {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 20px;
+    background: #d09aff;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  button:hover {
+    background: #bef620;
+    text-decoration: none;
+  }
 
 #answer{
     display: flex;
