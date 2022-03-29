@@ -94,7 +94,7 @@ function newGame() {
   <h3>Elementos del código</h3>
   <select name="tipo" id="type">
    <option value="1">Números</option>
-   <option value="2">Colores</option>
+   <option value="2">Colores(Aun no se puede jugar con colores)</option>
   </select>
   <h3>Cantidad de espacios del código</h3>
   <select name="columns" id="columns">
