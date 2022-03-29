@@ -80,13 +80,13 @@ function newGame(){
   const enigma = new TheCode(t,c);
   console.log(enigma);
   document.getElementById('selectOptions').innerHTML=`  
-  <h3>Para comenzar seleccioná las siguientes opciones</h3>
-  <h4>Elementos del código</h4>
+  <h2>Para comenzar seleccioná las siguientes opciones</h2>
+  <h3>Elementos del código</h3>
   <select name="tipo" id="type">
    <option value="1">Números</option>
    <option value="2">Colores</option>
   </select>
-  <h4>Cantidad de espacios del código</h4>
+  <h3>Cantidad de espacios del código</h3>
   <select name="columns" id="columns">
    <option value="3">3</option>
    <option value="4">4</option>
@@ -132,7 +132,7 @@ function answering(enigma){
     console.log(answer);
     var t = enigma.types=="Color"?"color":"numero";
    document.getElementById('selectOptions').innerHTML= `<h3>Código generado!</h3>
-   <h4>Ahora intenta adivinar el código</h4>
+   <h2>Ahora intenta adivinar el código</h2>
    <div id="answer"></div>
    <button type="submit" id="test">Evaluar Respuesta</button>
    <div id="guessing"></div>
@@ -153,7 +153,7 @@ function inputs(c,t){
   var inputs =[];
   for (var j = 0; j < c; j++) {
      id= `id${j+1}`;
-     inputs.push(`<h4>Indique el ${t} ${j+1}</h4><input type="text" id="${id}">`)
+     inputs.push(`<h3>Indique el ${t} ${j+1}</h3><input type="text" id="${id}" required>`)
      
  }
   
@@ -183,9 +183,9 @@ function test(enigma,answer,result){
   console.log(enigma.columns+1)
 
   if(result.wellPositioned==enigma.columns){
-    document.getElementById('selectOptions').innerHTML=`Adivinaste el código!! era ${enigma.code} <button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
+    document.getElementById('selectOptions').innerHTML=`<h3>Adivinaste el código!! era ${enigma.code} </h3><button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
   }else{
-    document.getElementById('selectOptions').innerHTML=`Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${enigma.types} en la posicion correcta, ${result.badPositioned} ${enigma.types} en la posición equivocada y ${result.nonExistent} ${enigma.types} inexistentes <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
+    document.getElementById('selectOptions').innerHTML=`<h3>Ese no era el código,tenés que intentarlo nuevamente, las pistas son: elegiste ${result.wellPositioned} ${enigma.types} en la posicion correcta, ${result.badPositioned} ${enigma.types} en la posición equivocada y ${result.nonExistent} ${enigma.types} inexistentes </h3> <button type="submit" id="answerAgain" >Intentar de nuevo</button>`
     document.getElementById("answerAgain").addEventListener("click",()=>{answering(enigma)});
   }
   
