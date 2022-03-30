@@ -78,16 +78,13 @@ button {
     margin-bottom: 2%;
 }
 
-#answer input{
+#answer select{
     width:10%;
     min-height: 50px;
     border-radius: 10px;
     border-color: #bef620;
     text-align: center;
-    margin-right: 1%;
-    
-    
-    
+    margin-right: 1%; 
 }
 #contador{
     margin-top: 2%;
@@ -105,34 +102,48 @@ button {
     
 }
 
-#colorPicker #c0{
-    color: blue;
+
+
+
+
+#azul{
+    background-color: blue;
+    font-size: 10px;
 }
-#colorPicker #c1{
-    color: green;
+#verde{
+    background-color: green;
+    font-size: 10px;
 }
-#colorPicker #c2{
-    color: yellow;
+#amarillo{
+    background-color: yellow;
+    font-size: 10px;
 }
-#colorPicker #c3{
-    color: black;
+#negro{
+    background-color: black;
+    font-size: 10px;
 }
-#colorPicker #c4{
-    color: red;
+#rojo{
+    background-color: red;
+    font-size: 10px;
 }
-#colorPicker #c5{
-    color: rgb(73, 9, 9);
+#marron{
+    background-color: rgb(73, 9, 9);
+    font-size: 10px;
 }
-#colorPicker #c6{
-    color: rgb(145, 30, 145);
+#violeta{
+    background-color: rgb(145, 30, 145);
+    font-size: 10px;
 }
-#colorPicker #c7{
-    color: rgb(255, 144, 162);
+#rosa{
+    background-color: rgb(255, 144, 162);
+    font-size: 10px;
 }
-#colorPicker #c8{
-    color: orange;
+#naranja{
+    background-color: orange;
+    font-size: 10px;
 }
-#colorPicker #c9{
-    color: yellow;
+#amarillo{
+    background-color: yellow;
+    font-size: 10px;
 }
 

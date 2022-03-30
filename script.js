@@ -3,16 +3,16 @@
 
 //Colores 
 const colors = [
-  "blue",
-  "green",
-  "yellow",
-  "black",
-  "red",
-  "brown",
-  "violet",
-  "pink",
-  "orange",
-  "yellow",
+  "azul",
+  "verde",
+  "amarillo",
+  "negro",
+  "rojo",
+  "marron",
+  "violeta",
+  "rosa",
+  "naranja",
+  "amarillo"
 ];
 
 
@@ -168,7 +168,7 @@ function answering(enigma,game) {
    <div id="guessing"></div>
   `;
 
-  inputs(enigma.columns);
+  inputs(enigma);
 
   //se crea el objeto pistas
   const result = new Clues();
@@ -189,12 +189,42 @@ function answering(enigma,game) {
 }
 
 // Función accesoria de answering() que permite crear tantos ingresos de datos como elementos tenga el código
-function inputs(c) {
+function inputs(enigma) {
+  var c = enigma.columns;
+  var t = enigma.types;
   console.log(c);
   var inputs = [];
   for (var j = 0; j < c; j++) {
     id = `id${j + 1}`;
-    inputs.push(`<input type="text" id="${id}" required>`);
+    if (t=="Color"){
+      inputs.push(`<select name="numbers" id="${id}">
+      <option value="0" id ="${colors[0]}">'                         '</option>
+      <option value="1" id ="${colors[1]}">'                         '</option>
+      <option value="2" id ="${colors[2]}">'                         '</option>
+      <option value="3" id ="${colors[3]}">'                         '</option>
+      <option value="4" id ="${colors[4]}">'                         '</option>
+      <option value="5" id ="${colors[5]}">'                         '</option>
+      <option value="6" id ="${colors[6]}">'                         '</option>
+      <option value="7" id ="${colors[7]}">'                         '</option>
+      <option value="8" id ="${colors[8]}">'                         '</option>
+      <option value="9" id ="${colors[9]}">'                         '</option>
+      </select>`);
+    }else{
+      inputs.push(`<select name="numbers" id="${id}">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </select>`);
+    }
+
+   
   }
   inputs = inputs.join("");
   document.getElementById("answer").innerHTML = inputs;
@@ -272,32 +302,11 @@ function forced(enigma) {
 function showAnswers(game){
  console.log(game)
  var allAnswers;
- 
   allAnswers= `<h3>Intentos y pistas: ${game.showAnswersAndClues()} </h3>`;
- 
- 
  document.getElementById('showAnswers').innerHTML= allAnswers;
- 
- 
-}
-
-
-//Funciones aun no utilizadas
-/*
-
-function colorPickerGenerator(){
-  document.getElementById("colorPicker").innerHTML=`
-  <div id="c0"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c1"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c2"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c3"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c4"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c5"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c6"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c7"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c8"><i class="fa-solid fa-square-0"></i></div>
-  <div id="c9"><i class="fa-solid fa-square-0"></i></div>`;
 
 }
-*/
+
+
+//ICONO PARA COLORES <i class="fa-solid fa-square-0"></i>
 
