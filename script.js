@@ -15,15 +15,26 @@ const colors = [
   "yellow",
 ];
 
+
+
 //Usuario (aun no utilizado)
 /*
 class User {
     constructor(nickname){
         this.id;
         this.nickname = nickname;
+        this.playedGames;
     }
 }
 */
+
+class Games {
+ constructor(enigma){
+  this.id;
+  this.enigma=enigma;
+  this.answers=[];
+ }
+}
 
 //Clase madre de los códigos
 class Codes {
@@ -63,6 +74,7 @@ class TheCode extends Codes {
 class Guessings extends Codes {
   constructor(types, columns) {
     super(types, columns);
+    this.clues;
   }
 }
 
@@ -84,11 +96,12 @@ class Clues {
 //(Si es con números o con colores y si se va a utilizar un código de 3,4,5,6 o 7 espacios)
 
 function newGame() {
-
+const game = new Games();
   document.getElementById("contador").innerHTML = ` `;
   var t = "Number"; //type = Number por default
   var c = 4; // Columnas del código = 4 por default
   const enigma = new TheCode(t, c);
+  game.enigma = enigma;
   document.getElementById("selectOptions").innerHTML = `  
   <h2>Opciones del juego</h2>
   <h3>Elementos del código</h3>
@@ -112,7 +125,7 @@ function newGame() {
     createCode(enigma);
   });
   document.getElementById("gen").addEventListener("click", () => {
-    answering(enigma);
+    answering(enigma,game);
   });
 }
 
@@ -127,13 +140,15 @@ function createCode(enigma) {
 }
 
 //Función con la cual el usuario realiza los intentos de adivinar el código y en cada uno devuelve las pistas.
-function answering(enigma) {
+function answering(enigma,game) {
   //Comienza a contar los intentos
   document.getElementById(
     "contador"
   ).innerHTML = `<h3>Intento n°: ${enigma.counter}</h3>`;
   //Crea el objeto respuesta
   const answer = new Guessings(enigma.types, enigma.columns);
+  
+  
     //provee al usuario el ingreso de código
   document.getElementById(
     "selectOptions"
@@ -142,6 +157,7 @@ function answering(enigma) {
    <div id="answer"></div>
    <button type="submit" id="test">Evaluar Respuesta</button>
    <button type="submit" id="forced" >Mostrar el código</button>
+   <button type="submit" id="show" >Mostrar respuestas anteriores</button>
    <div id="guessing"></div>
   `;
 
@@ -157,6 +173,11 @@ function answering(enigma) {
   document.getElementById("test").addEventListener("click", () => {
     return test(enigma, answer, result);
   });
+  document.getElementById("show").addEventListener("click", () => {
+    return showAnswers(game);
+  });
+  
+  
 
 }
 
@@ -207,17 +228,19 @@ function test(enigma, answer, result) {
     enigma.counter = 1;
 
   } else {
+    answer.clues = `    ${result.wellPositioned} ${t} en la posición correcta 
+    <br> 
+    ${result.badPositioned} ${t} en la posición equivocada 
+    <br>
+     ${result.nonExistent} ${t} inexistente/s `;
+     
     document.getElementById("selectOptions").innerHTML = `
     <h3>Ese no era el código, intentalo nuevamente.
     <br> 
     <br> 
     Pistas:  
     <br>
-    ${result.wellPositioned} ${t} en la posición correcta 
-    <br> 
-    ${result.badPositioned} ${t} en la posición equivocada 
-    <br>
-     ${result.nonExistent} ${t} inexistente/s </h3> 
+    ${answer.clues} </h3> 
      <button type="submit" id="answerAgain" >Intentar de nuevo</button>`;
 
     document.getElementById("answerAgain").addEventListener("click", () => {
@@ -225,6 +248,7 @@ function test(enigma, answer, result) {
     });
     enigma.counter += 1;
   }
+  
 }
 
 //Función que permite visualizar el código enigma y salir forzadamente para iniciar un nuevo juego 
@@ -234,6 +258,19 @@ function forced(enigma) {
   <button type="submit" id="test" onclick="newGame()">Comenzar nuevo juego</button>`;
 
   enigma.counter = 1;
+}
+
+
+//funcion que devuelve todos los intentos de código y sus pistas
+function showAnswers(game){
+ var allAnswers;
+ for(var m=0; m<game.answers.length;m++){
+  allAnswers= `<h3>Intento: ${game.answers[m].code} / Pistas: ${game.answers[m].clues}`;
+ }
+ 
+ document.getElementById('showAnswers').innerHTML= allAnswers;
+ 
+ 
 }
 
 
