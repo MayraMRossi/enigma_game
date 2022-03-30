@@ -122,7 +122,7 @@ const game = new Games();
   <button type="submit" id="gen">Generar código</button> `;
 
   document.getElementById("gen").addEventListener("click", () => {
-    createCode(enigma);
+    createCode(enigma,game);
   });
   document.getElementById("gen").addEventListener("click", () => {
     answering(enigma,game);
@@ -131,7 +131,7 @@ const game = new Games();
 
 //Función que obsorve los valores seleccionados por el usuario, los introduce en el objeto del código creado 
 //y llama al método de generar código.
-function createCode(enigma) {
+function createCode(enigma,game) {
    
   document.getElementById("type").value == 1 ? (enigma.types = "Number") : (enigma.types = "Color");
   enigma.columns = Number(document.getElementById("columns").value);
@@ -165,13 +165,13 @@ function answering(enigma,game) {
 
   //se crea el objeto pistas
   const result = new Clues();
-
+  game.answers.push(answer);
   
   document.getElementById("forced").addEventListener("click", () => {
     forced(enigma);
   });
   document.getElementById("test").addEventListener("click", () => {
-    return test(enigma, answer, result);
+    return test(enigma, answer, result,game);
   });
   document.getElementById("show").addEventListener("click", () => {
     return showAnswers(game);
@@ -194,7 +194,7 @@ function inputs(c) {
 }
 
 //Función llamada en answering() que devuelve los resultados de cada intento.
-function test(enigma, answer, result) {
+function test(enigma, answer, result,game) {
   var t = enigma.types == "Color" ? "color/es" : "numero/s";
   var check =[];
 
@@ -244,7 +244,7 @@ function test(enigma, answer, result) {
      <button type="submit" id="answerAgain" >Intentar de nuevo</button>`;
 
     document.getElementById("answerAgain").addEventListener("click", () => {
-      answering(enigma);
+      answering(enigma,game);
     });
     enigma.counter += 1;
   }
@@ -263,6 +263,7 @@ function forced(enigma) {
 
 //funcion que devuelve todos los intentos de código y sus pistas
 function showAnswers(game){
+ console.log("ingresa")
  var allAnswers;
  for(var m=0; m<game.answers.length;m++){
   allAnswers= `<h3>Intento: ${game.answers[m].code} / Pistas: ${game.answers[m].clues}`;
