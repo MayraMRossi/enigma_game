@@ -34,6 +34,13 @@ class Games {
   this.enigma=enigma;
   this.answers=[];
  }
+ showAnswersAndClues(){
+  var all=[];
+  for(var n=0;n<this.answers.length-1;n++){
+   all.push(`<br>Código: ${this.answers[n].code} <br>Pistas: ${this.answers[n].clues}<br>`);
+  }
+  return all.join("<br>");
+ }
 }
 
 //Clase madre de los códigos
@@ -263,11 +270,11 @@ function forced(enigma) {
 
 //funcion que devuelve todos los intentos de código y sus pistas
 function showAnswers(game){
- console.log("ingresa")
+ console.log(game)
  var allAnswers;
- for(var m=0; m<game.answers.length;m++){
-  allAnswers= `<h3>Intento: ${game.answers[m].code} / Pistas: ${game.answers[m].clues}`;
- }
+ 
+  allAnswers= `<h3>Intentos y pistas: ${game.showAnswersAndClues()} </h3>`;
+ 
  
  document.getElementById('showAnswers').innerHTML= allAnswers;
  
