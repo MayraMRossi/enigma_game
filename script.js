@@ -198,16 +198,16 @@ function inputs(enigma) {
     id = `id${j + 1}`;
     if (t=="Color"){
       inputs.push(`<select name="numbers" id="${id}">
-      <option value="0" id ="${colors[0]}">                          </option>
-      <option value="1" id ="${colors[1]}">                         </option>
-      <option value="2" id ="${colors[2]}">                         </option>
-      <option value="3" id ="${colors[3]}">                         </option>
-      <option value="4" id ="${colors[4]}">                         </option>
-      <option value="5" id ="${colors[5]}">                         </option>
-      <option value="6" id ="${colors[6]}">                         </option>
-      <option value="7" id ="${colors[7]}">                         </option>
-      <option value="8" id ="${colors[8]}">                         </option>
-      <option value="9" id ="${colors[9]}">                         </option>
+      <option value="0" id ="${colors[0]}">azul</option>
+      <option value="1" id ="${colors[1]}">verde</option>
+      <option value="2" id ="${colors[2]}">amarillo</option>
+      <option value="3" id ="${colors[3]}">negro</option>
+      <option value="4" id ="${colors[4]}">rojo</option>
+      <option value="5" id ="${colors[5]}">marron</option>
+      <option value="6" id ="${colors[6]}">violeta</option>
+      <option value="7" id ="${colors[7]}">rosa</option>
+      <option value="8" id ="${colors[8]}">naranja</option>
+      <option value="9" id ="${colors[9]}">amarillo</option>
       </select>`);
     }else{
       inputs.push(`<select name="numbers" id="${id}">
