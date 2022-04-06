@@ -306,6 +306,13 @@ function showAnswers(game){
  document.getElementById('showAnswers').innerHTML= allAnswers;
 
 }
+function impr(){
+
+ window.print();
+
+}
+
+
 
 
 //ICONO PARA COLORES <i class="fa-solid fa-square-0"></i>
