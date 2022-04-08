@@ -306,11 +306,6 @@ function showAnswers(game){
  document.getElementById('showAnswers').innerHTML= allAnswers;
 
 }
-function impr(){
-
- window.print();
-
-}
 
 
 
