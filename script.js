@@ -109,8 +109,7 @@ const game = new Games();
   var c = 4; // Columnas del código = 4 por default
   const enigma = new TheCode(t, c);
   game.enigma = enigma;
-  document.getElementById("selectOptions").innerHTML = `  
-  <h2>Opciones del juego</h2>
+  document.getElementById("selectOptions").innerHTML =`<h2>Opciones del juego</h2>
   <h3>Elementos del código</h3>
   <select name="tipo" id="type">
    <option value="1">Números</option>
@@ -265,7 +264,8 @@ function test(enigma, answer, result,game) {
     enigma.counter = 1;
 
   } else {
-    answer.clues = `    ${result.wellPositioned} ${t} en la posición correcta 
+    answer.clues = `
+    ${result.wellPositioned} ${t} en la posición correcta 
     <br> 
     ${result.badPositioned} ${t} en la posición equivocada 
     <br>
